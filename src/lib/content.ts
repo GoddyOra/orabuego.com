@@ -1,6 +1,7 @@
 import { projects } from "@/content/projects";
 import { experience } from "@/content/experience";
-import type { ExperienceEntry, Project } from "@/types/content";
+import { resumes } from "@/content/resumes";
+import type { ExperienceEntry, Project, ResumeVariant } from "@/types/content";
 
 // Single read path for all content. Pages and the future llms.txt /
 // portfolio.md / agent-skills.json routes both call these — never read
@@ -15,6 +16,14 @@ export function getFeaturedProjects(): Project[] {
 
 export function getExperience(): ExperienceEntry[] {
   return experience;
+}
+
+export function getResumeVariants(): ResumeVariant[] {
+  return resumes;
+}
+
+export function getDefaultResume(): ResumeVariant {
+  return resumes.find((r) => r.isDefault) ?? resumes[0];
 }
 
 export type SiteStats = {
