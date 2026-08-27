@@ -35,10 +35,13 @@ TypeScript + Vercel**.
 
 ## Status
 
-**Phase 0 in progress.** Scaffold exists locally (Next.js 16 + TS + Tailwind
-v4 + shadcn/ui `base-nova`/neutral, `next-themes`/`motion`/`lucide-react`
-installed). Not yet pushed to GitHub or connected to Vercel — needs Ora's
-accounts, see Phase 0 below. Nothing from Phase 1 onward is built yet.
+**Phases 0–1 built locally, Phase 2 not started.** Scaffold (Next.js 16 +
+TS + Tailwind v4 + shadcn/ui `base-nova`/neutral) and the layout shell
+(Navbar with mobile sheet nav, Footer, `next-themes` dark/light toggle,
+placeholder routes for all six sections) are done and verified — production
+build, lint, and headless-browser checks all pass clean. **Not yet pushed
+to GitHub or connected to Vercel** — needs Ora's accounts before Phase 0 is
+fully closed out. Nothing from Phase 2 onward is built yet.
 
 ## Phased build plan
 
