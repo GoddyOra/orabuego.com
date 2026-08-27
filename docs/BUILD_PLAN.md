@@ -64,7 +64,10 @@ This status line gets updated as phases land.
 ### Phase 9 is a confirmation gate, not an automatic step
 
 It changes DNS at the registrar for a domain currently live on GitHub Pages,
-and retires `~/Web Dev/goddyora-github-io`. Sequence once confirmed: add
+and retires `~/Web Dev/goddyora-github-io` (GitHub repo:
+[GoddyOra/GoddyOra.github.io](https://github.com/GoddyOra/GoddyOra.github.io)
+— the user/org Pages repo currently wired to the orabuego.com CNAME).
+Sequence once confirmed: add
 orabuego.com + www as a Vercel custom domain → repoint DNS per Vercel's
 instructions → verify SSL and both apex/www resolve → confirm `/joseph`'s
 fate → confirm the old repo's disposition.

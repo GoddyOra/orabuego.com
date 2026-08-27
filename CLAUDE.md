@@ -51,6 +51,9 @@ Specifics that already bit us once:
   When `render` points at something that isn't a real `<button>` (a
   `<Link>`, an `<a>`), also pass `nativeButton={false}` or Base UI logs a
   console warning about missing native button semantics.
+- `motion` (from `motion/react`) variant objects need an explicit
+  `: Variants` type annotation, or TypeScript widens easing-preset strings
+  (`"easeOut"`) to `string` and the build fails strict type checking.
 
 ## Architecture
 
