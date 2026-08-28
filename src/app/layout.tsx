@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { MotionConfig } from "motion/react";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { Navbar } from "@/components/nav/navbar";
@@ -39,10 +41,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
-          <main className="flex flex-1 flex-col">{children}</main>
-          <Footer />
+          <MotionConfig reducedMotion="user">
+            <Navbar />
+            <main className="flex flex-1 flex-col">{children}</main>
+            <Footer />
+          </MotionConfig>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );

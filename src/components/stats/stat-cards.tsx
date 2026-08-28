@@ -4,17 +4,18 @@ import { motion, type Variants } from "motion/react";
 import { Card } from "@/components/ui/card";
 import type { SiteStats } from "@/lib/content";
 
+// Transform-only, same reasoning as hero.tsx — keeps this above-the-fold
+// content out of Chrome's "still painting" window for LCP purposes.
 const container: Variants = {
-  hidden: { opacity: 0 },
+  hidden: {},
   show: {
-    opacity: 1,
     transition: { staggerChildren: 0.08, delayChildren: 0.35 },
   },
 };
 
 const item: Variants = {
-  hidden: { opacity: 0, y: 12 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
+  hidden: { y: 12 },
+  show: { y: 0, transition: { duration: 0.4, ease: "easeOut" } },
 };
 
 export function StatCards({ stats }: { stats: SiteStats }) {

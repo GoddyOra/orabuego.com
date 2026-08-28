@@ -35,14 +35,35 @@ TypeScript + Vercel**.
 
 ## Status
 
-**Phases 0–7 built and pushed to GitHub, Phase 8 not started.** Scaffold,
-layout shell, homepage hero + stats, Experience/Projects (data-driven),
-Resume picker, MDX blog with syntax highlighting + RSS, contact form
-(react-hook-form/zod, honeypot, Resend), and SEO/agent-legibility
-(sitemap, robots.txt w/ Content-Signal, per-route metadata, dynamic OG
-images, Person/Article JSON-LD, `llms.txt`/`portfolio.md`/agent-skills
-manifest — all built from `lib/content.ts` so they can't drift from the
-real pages) are all done and verified — production build, lint, and a
+**Phases 0–8 built and pushed to GitHub, Phase 9 (launch) not started.**
+Phase 8 added: unused create-next-app boilerplate removed (default
+favicon + unused SVGs), a generated monogram icon, a custom 404 page,
+`prefers-reduced-motion` respected site-wide via `MotionConfig`, and
+Vercel Analytics wired in. A Lighthouse pass against the production build
+found the hero/stat-card entrance animations were hurting LCP (3.5s) by
+animating `opacity` on above-the-fold content — fixed by switching to
+transform-only reveals (see the CLAUDE.md note); Performance went
+90 → 95, LCP 3.5s → 2.8s, with Accessibility/SEO/Agentic-Browsing all at
+100. Cross-browser testing is Chrome-only in this environment (Playwright
+browser downloads hit sandbox friction) — code uses no exotic
+non-standard APIs, but Safari/Firefox haven't been visually confirmed.
+
+**Two things need Ora's action, both dashboard toggles, neither blocks
+further building:**
+- **Vercel Web Analytics**: the `<Analytics />` component is wired in, but
+  `/_vercel/insights/script.js` 404s even on the real deployment until
+  Web Analytics is turned on for the project — Vercel dashboard → your
+  project → Analytics tab → Enable (free tier).
+- **Resend** (Phase 6, restated): see below.
+
+Everything through Phase 8 — scaffold, layout shell, homepage hero +
+stats, Experience/Projects (data-driven), Resume picker, MDX blog with
+syntax highlighting + RSS, contact form (react-hook-form/zod, honeypot,
+Resend), SEO/agent-legibility (sitemap, robots.txt w/ Content-Signal,
+per-route metadata, dynamic OG images, Person/Article JSON-LD,
+`llms.txt`/`portfolio.md`/agent-skills manifest — all built from
+`lib/content.ts` so they can't drift from the real pages), and this
+phase's polish/QA — is done and verified: production build, lint, and a
 full-site headless-browser sweep all pass clean. Repo:
 [GoddyOra/orabuego.com](https://github.com/GoddyOra/orabuego.com), deployed
 on Vercel (auto-deploys on every push to `main`).

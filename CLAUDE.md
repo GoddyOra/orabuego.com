@@ -54,6 +54,13 @@ Specifics that already bit us once:
 - `motion` (from `motion/react`) variant objects need an explicit
   `: Variants` type annotation, or TypeScript widens easing-preset strings
   (`"easeOut"`) to `string` and the build fails strict type checking.
+- Don't animate `opacity` on above-the-fold content (hero text, stat
+  cards). Chrome doesn't credit an element as "painted" for Largest
+  Contentful Paint until an opacity transition settles, which tanked this
+  site's LCP to 3.5s in a Lighthouse run. Use transform-only entrance
+  animations (`y`, `x`, `scale`) up top instead — those don't block LCP
+  since the content is fully opaque from the first frame. Opacity fades
+  are fine further down the page, off the initial viewport.
 
 ## Architecture
 

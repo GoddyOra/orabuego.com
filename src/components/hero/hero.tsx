@@ -5,17 +5,19 @@ import { motion, type Variants } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/config";
 
+// Transform-only (no opacity) so the LCP text is fully opaque from the
+// first frame — Chrome doesn't credit an animating-opacity element as
+// "painted" until it settles, which was inflating this page's LCP.
 const container: Variants = {
-  hidden: { opacity: 0 },
+  hidden: {},
   show: {
-    opacity: 1,
     transition: { staggerChildren: 0.08, delayChildren: 0.05 },
   },
 };
 
 const item: Variants = {
-  hidden: { opacity: 0, y: 12 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
+  hidden: { y: 12 },
+  show: { y: 0, transition: { duration: 0.4, ease: "easeOut" } },
 };
 
 export function Hero() {
