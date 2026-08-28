@@ -1,0 +1,25 @@
+export const metadata = {
+  title: "Hello, world",
+  description: "Placeholder first post — real writing lands during the content-fill pass.",
+  publishedAt: "2026-08-20",
+  tags: ["meta"],
+  draft: false,
+};
+
+This is a placeholder post so the blog pipeline (MDX rendering, syntax
+highlighting, RSS) has something real to render against. Real posts —
+and a real voice — land during the content-fill pass.
+
+## What this proves
+
+- MDX renders through `@next/mdx`, not a third-party remote-MDX library.
+- Markdown features work: **bold**, _italic_, [links](/), lists.
+- Code blocks get syntax highlighting via `rehype-pretty-code`:
+
+```ts
+export function greet(name: string) {
+  return `Hello, ${name}`;
+}
+```
+
+> A blockquote, for good measure.

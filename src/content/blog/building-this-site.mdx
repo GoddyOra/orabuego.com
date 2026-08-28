@@ -1,0 +1,25 @@
+export const metadata = {
+  title: "Building this site",
+  description: "A quick note on the stack behind orabuego.com, written while it was still being built.",
+  publishedAt: "2026-08-27",
+  tags: ["meta", "nextjs"],
+  draft: false,
+};
+
+This site is Next.js 16 (App Router) on Vercel — TypeScript, Tailwind v4,
+shadcn/ui, `next-themes` for dark mode, and MDX for this blog. Zero paid
+services, same as the other projects on this account.
+
+The interesting part isn't the stack, it's the seam: every page reads
+content through one loader layer instead of touching the data files
+directly.
+
+```ts
+// src/lib/content.ts — single read path
+export function getProjects() {
+  return projects;
+}
+```
+
+That means dropping in real project write-ups, a real bio, and real
+experience entries later is a content-only change — no layout code moves.
