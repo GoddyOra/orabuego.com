@@ -35,12 +35,15 @@ TypeScript + Vercel**.
 
 ## Status
 
-**Phases 0–6 built and pushed to GitHub, Phase 7 not started.** Scaffold,
+**Phases 0–7 built and pushed to GitHub, Phase 8 not started.** Scaffold,
 layout shell, homepage hero + stats, Experience/Projects (data-driven),
-Resume picker, MDX blog with syntax highlighting + RSS, and the contact
-form (validated client-side with react-hook-form/zod, honeypot, Resend on
-the backend) are all done and verified — production build, lint, and
-headless-browser checks pass clean throughout. Repo:
+Resume picker, MDX blog with syntax highlighting + RSS, contact form
+(react-hook-form/zod, honeypot, Resend), and SEO/agent-legibility
+(sitemap, robots.txt w/ Content-Signal, per-route metadata, dynamic OG
+images, Person/Article JSON-LD, `llms.txt`/`portfolio.md`/agent-skills
+manifest — all built from `lib/content.ts` so they can't drift from the
+real pages) are all done and verified — production build, lint, and a
+full-site headless-browser sweep all pass clean. Repo:
 [GoddyOra/orabuego.com](https://github.com/GoddyOra/orabuego.com), deployed
 on Vercel (auto-deploys on every push to `main`).
 

@@ -3,6 +3,8 @@ import path from "node:path";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { Badge } from "@/components/ui/badge";
+import { JsonLd } from "@/components/json-ld";
+import { siteConfig } from "@/lib/config";
 import type { BlogPostMeta } from "@/types/content";
 
 const BLOG_DIR = path.join(process.cwd(), "src/content/blog");
@@ -56,6 +58,18 @@ export default async function BlogPostPage({
 
   return (
     <article className="mx-auto w-full max-w-3xl px-6 py-24">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: metadata.title,
+          description: metadata.description,
+          datePublished: metadata.publishedAt,
+          dateModified: metadata.updatedAt ?? metadata.publishedAt,
+          author: { "@type": "Person", name: siteConfig.name },
+          url: `${siteConfig.url}/blog/${slug}`,
+        }}
+      />
       <p className="text-sm text-muted-foreground">
         {formatDate(metadata.publishedAt)}
       </p>
