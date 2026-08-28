@@ -35,13 +35,27 @@ TypeScript + Vercel**.
 
 ## Status
 
-**Phases 0–1 built locally, Phase 2 not started.** Scaffold (Next.js 16 +
-TS + Tailwind v4 + shadcn/ui `base-nova`/neutral) and the layout shell
-(Navbar with mobile sheet nav, Footer, `next-themes` dark/light toggle,
-placeholder routes for all six sections) are done and verified — production
-build, lint, and headless-browser checks all pass clean. **Not yet pushed
-to GitHub or connected to Vercel** — needs Ora's accounts before Phase 0 is
-fully closed out. Nothing from Phase 2 onward is built yet.
+**Phases 0–4 built and pushed to GitHub, Phase 5 not started.** Scaffold,
+layout shell (Navbar/Footer/theme toggle), homepage hero + stat cards
+(computed from real project data), data-driven Experience timeline and
+Projects grid + detail pages, and the Resume picker (3 tracks, real
+placeholder PDFs, `/resume.pdf` default alias) are all done and verified —
+production build, lint, and headless-browser checks pass clean throughout.
+Repo: [GoddyOra/orabuego.com](https://github.com/GoddyOra/orabuego.com).
+**Not yet connected to Vercel** — last piece of Phase 0, needs Ora's
+Vercel account (see below). Nothing from Phase 5 onward is built yet.
+
+### Connecting Vercel (remaining Phase 0 step)
+
+Fastest path is the Vercel web dashboard, no CLI needed:
+1. vercel.com → **Add New… → Project** → **Import** `GoddyOra/orabuego.com`.
+2. Vercel auto-detects Next.js — default build settings are correct
+   (`npm run build`, output `.next`). No env vars needed yet (those start
+   in Phase 6 for Resend).
+3. Deploy. Every push to `main` then auto-deploys; PRs/branches get their
+   own preview URLs.
+4. Custom domain (orabuego.com) attaches in Phase 9, not now — don't touch
+   DNS yet.
 
 ## Phased build plan
 
