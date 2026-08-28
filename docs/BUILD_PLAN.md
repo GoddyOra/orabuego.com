@@ -35,27 +35,36 @@ TypeScript + Vercel**.
 
 ## Status
 
-**Phases 0–4 built and pushed to GitHub, Phase 5 not started.** Scaffold,
-layout shell (Navbar/Footer/theme toggle), homepage hero + stat cards
-(computed from real project data), data-driven Experience timeline and
-Projects grid + detail pages, and the Resume picker (3 tracks, real
-placeholder PDFs, `/resume.pdf` default alias) are all done and verified —
-production build, lint, and headless-browser checks pass clean throughout.
-Repo: [GoddyOra/orabuego.com](https://github.com/GoddyOra/orabuego.com).
-**Not yet connected to Vercel** — last piece of Phase 0, needs Ora's
-Vercel account (see below). Nothing from Phase 5 onward is built yet.
+**Phases 0–6 built and pushed to GitHub, Phase 7 not started.** Scaffold,
+layout shell, homepage hero + stats, Experience/Projects (data-driven),
+Resume picker, MDX blog with syntax highlighting + RSS, and the contact
+form (validated client-side with react-hook-form/zod, honeypot, Resend on
+the backend) are all done and verified — production build, lint, and
+headless-browser checks pass clean throughout. Repo:
+[GoddyOra/orabuego.com](https://github.com/GoddyOra/orabuego.com), deployed
+on Vercel (auto-deploys on every push to `main`).
 
-### Connecting Vercel (remaining Phase 0 step)
+**Phase 6 needs one thing from Ora to fully verify:** a Resend account +
+API key, see below. Everything else in Phase 6 is done and tested down to
+that boundary (validation, honeypot, graceful failure when unconfigured —
+all confirmed via curl and a headless-browser run).
 
-Fastest path is the Vercel web dashboard, no CLI needed:
-1. vercel.com → **Add New… → Project** → **Import** `GoddyOra/orabuego.com`.
-2. Vercel auto-detects Next.js — default build settings are correct
-   (`npm run build`, output `.next`). No env vars needed yet (those start
-   in Phase 6 for Resend).
-3. Deploy. Every push to `main` then auto-deploys; PRs/branches get their
-   own preview URLs.
-4. Custom domain (orabuego.com) attaches in Phase 9, not now — don't touch
-   DNS yet.
+### Finishing Phase 6: Resend setup (needs Ora)
+
+1. Sign up free at resend.com.
+2. Create an API key (Dashboard → API Keys).
+3. Set two env vars — locally in `.env.local` (copy `.env.example`) and in
+   Vercel (Project → Settings → Environment Variables) for production:
+   - `RESEND_API_KEY` — the key from step 2.
+   - `CONTACT_TO_EMAIL` — where submissions should land. **Until
+     orabuego.com is verified as a sending domain in Resend, it can only
+     deliver to the email address on the Resend account itself** — use
+     that same address here for now. Verifying orabuego.com as a sender
+     (a few DNS records) can happen independently of the Phase 9 hosting
+     cutover, whenever Ora wants a `@orabuego.com` from-address instead of
+     Resend's shared `onboarding@resend.dev`.
+4. Redeploy (or just restart `next dev` locally) so the new env vars load,
+   then submit the live form and confirm an email arrives.
 
 ## Phased build plan
 
