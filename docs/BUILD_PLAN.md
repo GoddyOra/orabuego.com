@@ -7,7 +7,7 @@ Personal portfolio site for Godwin "Ora" Orabuego · Next.js 16 + Vercel, zero p
 ## Why this site, why this stack
 
 orabuego.com currently serves a placeholder "under construction" page
-(`~/Web Dev/goddyora-github-io`, GitHub Pages) with a hidden `/joseph`
+(`~/Web Dev/goddyora-github-io`, GitHub Pages) with a hidden `/austin`
 birthday-page easter egg. This project replaces it with a real portfolio,
 comparable in polish and depth to
 [abdessamed.com](https://www.abdessamed.com/) — confirmed via response
@@ -116,8 +116,9 @@ and retires `~/Web Dev/goddyora-github-io` (GitHub repo:
 — the user/org Pages repo currently wired to the orabuego.com CNAME).
 Sequence once confirmed: add
 orabuego.com + www as a Vercel custom domain → repoint DNS per Vercel's
-instructions → verify SSL and both apex/www resolve → confirm `/joseph`'s
-fate → confirm the old repo's disposition.
+instructions → verify SSL and both apex/www resolve → verify `/austin`
+still renders (it is ported forward, see below) → confirm the old repo's
+disposition.
 
 ## Default assumptions (stated now, easy to override)
 
@@ -127,8 +128,16 @@ fate → confirm the old repo's disposition.
   initialized on the neutral/`base-nova` preset as a starting grayscale
   foundation; an accent color gets layered on in Phase 1.
 - **Fonts:** Geist (Vercel's own) instead of Baloo 2 + Poppins.
-- **`/joseph`:** ported forward as a hidden route in the new site rather
-  than deleted outright — say the word if it should just go away instead.
+- **`/austin`:** ported forward rather than deleted — **done**. The page
+  is Ora's birthday tribute to his brother Austin, dated and signed, so it
+  is kept as a permanent keepsake. It lives as untouched standalone HTML at
+  `public/austin/` (its own fonts, styles and confetti script — not rebuilt
+  as a React route), with a `rewrites()` entry in `next.config.ts` mapping
+  the bare `/austin` URL onto `public/austin/index.html`. Image `src`s were
+  made absolute (`/austin/img/...`) during the port, since relative paths
+  would resolve against `/` on the extensionless URL. Earlier revisions of
+  this doc called this route `/joseph` — that was wrong; Joseph is the
+  younger brother mentioned inside Austin's message.
 - **Project case studies** (`/projects/[slug]`): route scaffolded in Phase
   3, only populated for projects with enough material — not a hard
   requirement for launch.
